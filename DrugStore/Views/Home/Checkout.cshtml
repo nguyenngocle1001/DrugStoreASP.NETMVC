@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!-- page -->
+<div class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a href="/Home/Index">Trang chủ</a>
+                    <i>|</i>
+                </li>
+                <li>Thanh toán</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //page -->
+<!-- checkout page -->
+<div class="privacy">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">
+            Thanh toán
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <div class="checkout-right">
+            <h4>
+                Giỏ hàng của bạn:
+                <span>3 Sản phẩm</span>
+            </h4>
+            <div class="table-responsive">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Hình sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Tên sản phẩm</th>
+
+                            <th>Giá</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="rem1">
+                            <td class="invert">1</td>
+                            <td class="invert-image">
+                                <a href="single2.html">
+                                    <img src="~/Content/User/images/a7.jpg" alt=" " class="img-responsive">
+                                </a>
+                            </td>
+                            <td class="invert">
+                                <div class="quantity">
+                                    <div class="quantity-select">
+                                        <div class="entry value-minus">&nbsp;</div>
+                                        <div class="entry value">
+                                            <span>1</span>
+                                        </div>
+                                        <div class="entry value-plus active">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="invert">Spotzero Spin Mop</td>
+                            <td class="invert">$888.00</td>
+                            <td class="invert">
+                                <div class="rem">
+                                    <div class="close1"> </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="checkout-left">
+            <div class="address_form_agile">
+                <h4>Thông tin chi tiết</h4>
+                <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+                    <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+                        <div class="information-wrapper">
+                            <div class="first-row">
+                                <div class="controls">
+                                    <input class="billing-address-name" type="text" name="name" placeholder="Họ tên" required="">
+                                </div>
+                                <div class="w3_agileits_card_number_grids">
+                                    <div class="w3_agileits_card_number_grid_left">
+                                        <div class="controls">
+                                            <input type="text" placeholder="Số điện thoại" name="number" required="">
+                                        </div>
+                                    </div>
+                                    <div class="w3_agileits_card_number_grid_right">
+                                        <div class="controls">
+                                            <input type="text" placeholder="Địa chỉ" name="address" required="">
+                                        </div>
+                                    </div>
+                                    <div class="clear"> </div>
+                                </div>
+                                <div class="controls">
+                                    <input type="text" placeholder="Tỉnh/TP" name="city" required="">
+                                </div>
+                            </div>
+                            <button class="submit check_out">Đặt hàng</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
