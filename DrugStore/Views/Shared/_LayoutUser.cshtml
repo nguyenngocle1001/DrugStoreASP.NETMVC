@@ -6,20 +6,20 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+    <title>@ViewBag.Title</title>
     <!--/tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
     </script>
     <!--//tags -->
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -69,21 +69,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li>
                         <span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
                     </li>
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#myModal1">
-                            <span class="fa fa-unlock-alt" aria-hidden="true"></span> Đăng nhập
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#myModal2">
-                            <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký
-                        </a>
-                    </li>
+                    @if (Session["USER_NAME"] == null)
+                    {
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal1">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span> Đăng nhập
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal2">
+                                <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li style="border-right: none">
+                            <div class="user__login" style="width: 200px; text-align: left">
+                                <span class="fa fa-user-circle" aria-hidden="true">@Session["USER_NAME"]</span>
+                                <a href="/Account/Logout">Thoát</a>
+                            </div>
+                        </li>
+                    }
+
                 </ul>
                 <!-- //header lists -->
                 <!-- search -->
                 <div class="agileits_search">
-                    <form action="#" method="post">
+                    <form action="/Home/Search" method="post">
                         <input name="Search" type="search" placeholder="Chúng tôi có thể giúp gì cho bạn" required="">
                         <button type="submit" class="btn btn-default" aria-label="Left Align">
                             <span class="fa fa-search" aria-hidden="true"> </span>
@@ -131,13 +144,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 Đăng ký ngay
                             </a>
                         </p>
-                        <form action="#" method="post">
+                        <form action="/Account/Login" method="post">
                             <div class="styled-input agile-styled-input-top">
-                                <input type="text" placeholder="tên tài khoản" name="Name" required="">
+                                <input type="text" placeholder="tên tài khoản" name="username" required="">
                             </div>
                             <div class="styled-input">
                                 <input type="password" placeholder="mật khẩu" name="password" required="">
                             </div>
+                            @if (Session["notice"] != null)
+                            {
+                                <div class="styled-input">
+                                    @Html.Raw(Session["notice"])
+                                </div>
+                            }
+
                             <input type="submit" value="Đăng Nhập">
                         </form>
                         <div class="clearfix"></div>
@@ -216,20 +236,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list">
                                 <li class="active">
-                                    <a class="nav-stylehead" href="index.html">
+                                    <a class="nav-stylehead" href="/Home/Index">
                                         Trang chủ
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="about.html">Sản phẩm</a>
+                                    <a class="nav-stylehead" href="/Home/Products">Sản phẩm</a>
                                 </li>
 
                                 @Html.Action("Categorys", "Partial")
                                 @Html.Action("Manufactures", "Partial")
 
                                 <li class="">
-                                    <a class="nav-stylehead" href="faqs.html">Phản hồi</a>
+                                    <a class="nav-stylehead" href="">Phản hồi</a>
                                 </li>
                             </ul>
                         </div>
@@ -341,13 +361,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- cart-js -->
     <script src="~/Scripts/User/js/minicart.js"></script>
     <script>
-        paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
-
+        paypalm.minicartk.render();
+        //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
         paypalm.minicartk.cart.on('checkout', function (evt) {
             var items = this.items(),
                 len = items.length,
                 total = 0,
                 i;
+            console.log(items);
 
             // Count the number of each item in the cart
             for (i = 0; i < len; i++) {
@@ -358,14 +379,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
                 evt.preventDefault();
             }
+            console.log(items);
         });
     </script>
-    <!-- //cart-js -->
-    <!-- price range (top products) -->
     <script src="~/Scripts/User/js/jquery-ui.js"></script>
 
     <script>
-        //<![CDATA[
         $(window).load(function () {
             $("#slider-range").slider({
                 range: true,
@@ -378,10 +397,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
             $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
 
-        }); //]]>
+        });
     </script>
-    <!-- //price range (top products) -->
-    <!-- flexisel (for special offers) -->
     <script src="~/Scripts/User/js/jquery.flexisel.js"></script>
     <script>
         $(window).load(function () {
@@ -410,8 +427,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         });
     </script>
-    <!-- //flexisel (for special offers) -->
-    <!-- password-script -->
     <script>
         window.onload = function () {
             document.getElementById("password1").onchange = validatePassword;
@@ -428,11 +443,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             //empty string means no validation error
         }
     </script>
-    <!-- //password-script -->
-    <!-- smoothscroll -->
     <script src="~/Scripts/User/js/SmoothScroll.min.js"></script>
-    <!-- //smoothscroll -->
-    <!-- start-smooth-scrolling -->
     <script src="~/Scripts/User/js/move-top.js"></script>
     <script src="~/Scripts/User/js/easing.js"></script>
     <script>
@@ -446,8 +457,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
-    <!-- //end-smooth-scrolling -->
-    <!-- smooth-scrolling-of-move-up -->
     <script>
         $(document).ready(function () {
             /*
@@ -464,12 +473,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         });
     </script>
-    <!-- //smooth-scrolling-of-move-up -->
-    <!-- for bootstrap working -->
     <script src="~/Scripts/bootstrap.js"></script>
-    <!-- //for bootstrap working -->
-    <!-- //js-files -->
 
-
+    @if (Session["notice"] != null)
+    {
+        Session.Remove("notice");
+        <script>
+            $('#myModal1').modal("show")
+        </script>
+    }
+    
 </body>
 </html>

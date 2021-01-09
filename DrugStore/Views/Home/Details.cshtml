@@ -1,4 +1,4 @@
-﻿
+﻿@model DrugStore.Models.Drug
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
@@ -9,10 +9,10 @@
         <div class="container">
             <ul class="w3_short">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="/Home/Index">Trang chủ</a>
                     <i>|</i>
                 </li>
-                <li>Single Page</li>
+                <li>Sản phẩm: @Model.Drug_Name</li>
             </ul>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="container">
         <!-- tittle heading -->
         <h3 class="tittle-w3l">
-            Single Page
+            Chi Tiết Sản Phẩm
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-md-7 single-right-left simpleCart_shelfItem">
-            <h3>Zeeba Premium Basmati Rice - 5 KG</h3>
+            <h3>@Model.Drug_Name</h3>
             <div class="rating1">
                 <span class="starRating">
                     <input id="rating5" type="radio" name="rating" value="5">
@@ -53,49 +53,35 @@
                 </span>
             </div>
             <p>
-                <span class="item_price">$950.00</span>
-                <del>$1300.00</del>
-                <label>Free delivery</label>
+                <span class="item_price">@string.Format("đ {0:#,##}", Model.Price)</span>
+                <del>@string.Format("đ {0:#,##}", Model.Price)</del>
+                <label>Miễn phí giao hàng</label>
             </p>
             <div class="single-infoagile">
                 <ul>
                     <li>
-                        Cash on Delivery Eligible.
+                        Thanh toán trực tiếp.
                     </li>
                     <li>
-                        Shipping Speed to Delivery.
+                        Giao hàng siêu tốc.
                     </li>
                     <li>
-                        Sold and fulfilled by Supple Tek (3.6 out of 5 | 8 ratings).
+                        Bán và hoàn thành bởi Supple Tek (3,6 trên 5 | 8 xếp hạng).
                     </li>
                     <li>
-                        1 offer from
-                        <span class="item_price">$950.00</span>
+                        1 ưu đãi khi đơn hàng từ
+                        <span class="item_price">đ 1.000.000</span>
                     </li>
                 </ul>
             </div>
             <div class="product-single-w3l">
                 <p>
-                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a
-                    <label>Vegetarian</label> product.
+                    
                 </p>
-                <ul>
-                    <li>
-                        Best for Biryani and Pulao.
-                    </li>
-                    <li>
-                        After cooking, Zeeba Basmati rice grains attain an extra ordinary length of upto 2.4 cm/~1 inch.
-                    </li>
-                    <li>
-                        Zeeba Basmati rice adheres to the highest food afety standards as your health is paramount to us.
-                    </li>
-                    <li>
-                        Contains only the best and purest grade of basmati rice grain of Export quality.
-                    </li>
-                </ul>
+                <div>@Html.Raw(Model.Description)</div>
                 <p>
-                    <i class="fa fa-refresh" aria-hidden="true"></i>All food products are
-                    <label>non-returnable.</label>
+                    <i class="fa fa-refresh" aria-hidden="true"></i>Khi xác nhận hàng và thanh toán
+                    <label>không thể trả lại</label>
                 </p>
             </div>
             <div class="occasion-cart">
@@ -105,13 +91,13 @@
                             <input type="hidden" name="cmd" value="_cart" />
                             <input type="hidden" name="add" value="1" />
                             <input type="hidden" name="business" value=" " />
-                            <input type="hidden" name="item_name" value="Zeeba Premium Basmati Rice - 5 KG" />
-                            <input type="hidden" name="amount" value="950.00" />
+                            <input type="hidden" name="item_name" value="@Model.Drug_Name" />
+                            <input type="hidden" name="amount" value="@Model.Price" />
                             <input type="hidden" name="discount_amount" value="1.00" />
-                            <input type="hidden" name="currency_code" value="USD" />
+                            <input type="hidden" name="currency_code" value="VND" />
                             <input type="hidden" name="return" value=" " />
                             <input type="hidden" name="cancel_return" value=" " />
-                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                            <input type="submit" name="submit" value="Thêm vào giỏ" class="button" />
                         </fieldset>
                     </form>
                 </div>

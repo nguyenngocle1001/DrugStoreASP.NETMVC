@@ -39,17 +39,17 @@
                 <tr>
                     <td>@i</td>
                     <td>
-                        <div style="background-image: url(../../images/Avts/avatar-1.jpg)" class="avatar"></div>
+                        <div style="background-image: url(../../images/Avts/@users[i-1].User_Id/@users[i-1].Avatar)" class="avatar"></div>
                     </td>
                     <td>@users[i-1].User_Namme</td>
                     <td>@users[i - 1].Full_Name</td>
                     <td>@users[i - 1].Email</td>
                     <td>@users[i - 1].Phone</td>
                     <td>
-                        <a href="user-edit.html" class="btn btn-sm btn-info">
+                        <a href="/Users/EditUsers/@users[i-1].User_Id" class="btn btn-sm btn-info">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
-                        <a href="#" class="btn btn-sm btn-danger">
+                        <a href="/Users/Detroys/@users[i-1].User_Id" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </td>

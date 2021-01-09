@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DrugStore.Models.Drug>
 @{
     ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
@@ -23,7 +23,7 @@
     <div class="container">
         <!-- tittle heading -->
         <h3 class="tittle-w3l">
-            Kitchen Products
+            Sản Phẩm: @ViewData["Name"]
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -37,47 +37,62 @@
         <!-- product right -->
         <div class="agileinfo-ads-display col-md-9 w3l-rightpro">
             <div class="wrapper">
+                @{
+                    var products = Model.ToList();
+                    var i = 0;
+                }
                 <!-- first section -->
-                <div class="product-sec1">
-                    <div class="col-md-4 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="~/Content/User/images/a1.jpg" alt="">
-                                <span class="product-new-top">New</span>
-                            </div>
-                            <div class="item-info-product ">
-                                <h4>
-                                    <a href="single.html">Almonds, 100g</a>
-                                </h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">$149.00</span>
-                                    <del>$280.00</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Almonds, 100g" />
-                                            <input type="hidden" name="amount" value="149.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
 
+                @while (i < products.Count())
+                {
+                    var max = i + 3;
+                    var end = max >= products.Count() ? products.Count() : max;
+
+                    <div class="product-sec1">
+                        @while (i < end)
+                        {
+                            <div class="col-xs-4 product-men">
+                                <div class="men-pro-item simpleCart_shelfItem">
+                                    <div class="men-thumb-item">
+                                        <div class="image__product" style="background-image: url(../../Content/User/images/a1.jpg)"></div>
+                                    </div>
+                                    <div class="item-info-product ">
+                                        <h4>
+                                            <a href="/Home/Details/@products[i].Drug_Id" class="title__product">@products[i].Drug_Name</a>
+                                        </h4>
+                                        <div class="info-product-price">
+                                            <span class="item_price">@String.Format("đ{0:#,###}", products[i].Price)</span>
+                                            <del>@String.Format("đ{0:#,###}", products[i].Price)</del>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                            <form action="#" method="post">
+                                                <fieldset>
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="business" value=" " />
+                                                    <input type="hidden" name="item_name" value="@products[i].Drug_Name" />
+                                                    <input type="hidden" name="amount" value="@products[i].Price" />
+                                                    <input type="hidden" name="discount_amount" value="1.00" />
+                                                    <input type="hidden" name="currency_code" value="VND" />
+                                                    <input type="hidden" name="return" value=" " />
+                                                    <input type="hidden" name="cancel_return" value=" " />
+                                                    <input type="submit" name="submit" value="Thêm vào giỏ" class="button" />
+                                                </fieldset>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            i++;
+                        }
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
+                }
                 <!-- //first section -->
             </div>
         </div>
         <!-- //product right -->
     </div>
 </div>
+

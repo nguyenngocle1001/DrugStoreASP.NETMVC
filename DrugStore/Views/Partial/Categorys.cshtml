@@ -1,4 +1,5 @@
-﻿<li class="dropdown">
+﻿@model IEnumerable<DrugStore.Models.Category>
+<li class="dropdown">
     <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         Loại thuốc
         <span class="caret"></span>
@@ -6,57 +7,27 @@
     <ul class="dropdown-menu multi-column columns-3">
         <div class="agile_inner_drop_nav_info">
             <div class="col-sm-4 multi-gd-img">
+                @{ 
+                    var categorys = Model.ToList();
+                }
                 <ul class="multi-column-dropdown">
-                    <li>
-                        <a href="product.html">Bakery</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Baking Supplies</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Coffee, Tea & Beverages</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Dried Fruits, Nuts</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Sweets, Chocolate</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Spices & Masalas</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Jams, Honey & Spreads</a>
-                    </li>
+                    @for (var i = 0; i < (int)(categorys.Count() / 2); i++)
+                    {
+                        <li>
+                            <a style="text-transform: uppercase" href="/Home/ProductsCategory/@categorys[i].Cate_Id">@categorys[i].Cate_Name</a>
+                        </li>
+                    }
                 </ul>
             </div>
             <div class="col-sm-4 multi-gd-img">
                 <ul class="multi-column-dropdown">
-                    <li>
-                        <a href="product.html">Pickles</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Pasta & Noodles</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Rice, Flour & Pulses</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Sauces & Cooking Pastes</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Snack Foods</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Oils, Vinegars</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Meat, Poultry & Seafood</a>
-                    </li>
+                    @for (var i = (int)(categorys.Count() / 2); i < categorys.Count() ; i++)
+                    {
+                        <li>
+                            <a style="text-transform: uppercase" href="/Home/ProductsCategory/@categorys[i].Cate_Id">@categorys[i].Cate_Name</a>
+                        </li>
+                    }
                 </ul>
-            </div>
-            <div class="col-sm-4 multi-gd-img">
-                <img src="~/Content/User/images/nav.png" alt="">
             </div>
             <div class="clearfix"></div>
         </div>

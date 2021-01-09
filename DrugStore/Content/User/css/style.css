@@ -5919,3 +5919,19 @@ footer__offer, .container__nav {
     justify-content: center;
 }
 
+.image__product {
+    width: 100%;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.title__product {
+    display: -webkit-box;
+    height: 38px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

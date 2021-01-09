@@ -130,6 +130,7 @@
     <Compile Include="Controllers\Admin\ManufacturesController.cs" />
     <Compile Include="Controllers\Admin\RolesController.cs" />
     <Compile Include="Controllers\Admin\UsersController.cs" />
+    <Compile Include="Controllers\User\AccountController.cs" />
     <Compile Include="Controllers\User\HomeController.cs" />
     <Compile Include="Controllers\User\PartialController.cs" />
     <Compile Include="Global.asax.cs">
@@ -152,6 +153,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\User\css\bootstrap.css" />
     <Content Include="Content\User\css\creditly.css" />
     <Content Include="Content\User\css\easy-responsive-tabs.css" />
     <Content Include="Content\User\css\flexslider.css" />
@@ -471,6 +473,8 @@
     <Content Include="Views\Manufactures\EditManufactures.cshtml" />
     <Content Include="Views\Users\Users.cshtml" />
     <Content Include="Views\Users\AddUsers.cshtml" />
+    <Content Include="Views\Users\EditUsers.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
