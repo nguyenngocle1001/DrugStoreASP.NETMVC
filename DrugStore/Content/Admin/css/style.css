@@ -31,3 +31,20 @@
 #admin-wrapper{
     width: calc(100% - 250px);
 }
+
+.error {
+    color: red;
+    font-style: italic;
+}
+
+.success {
+    color: lawngreen;
+    font-style: italic;
+}
+
+.avatar {
+    width: 100%;
+    height: 100px;
+    background-size: contain;
+    background-position: center;
+}

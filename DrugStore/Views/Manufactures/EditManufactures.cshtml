@@ -1,0 +1,25 @@
+﻿@model DrugStore.Models.Manufacturer
+@{
+    ViewBag.Title = "Chỉnh sửa nhà sản xuất";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section id="admin-content" class="p-3">
+    <h3 class="mb-4 text-center">Chỉnh sửa nhà sản xuất</h3>
+    <form method="post" action="/Manufactures/EditManufactures/@Model.Id">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <div class="form-group">
+                    <label>Tên nhà xuất</label>
+                    <input type="text" value="@Model.Name" name="name" class="form-control" placeholder="tên nhà sản xuất" />
+                    @Html.Raw(ViewData["errorName"])
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Lưu lại</button>
+                    <a class="btn btn-secondary" href="/Manufactures/Manufactures">Quay lại</a>
+                </div>
+                @Html.Raw(ViewData["notice"])
+            </div>
+        </div>
+    </form>
+</section>
+

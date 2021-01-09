@@ -54,7 +54,7 @@ namespace DrugStore.Models
     #endregion
 		
 		public DrugsDBDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DRUG_STOREConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DRUG_STOREConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

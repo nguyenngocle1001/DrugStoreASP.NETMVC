@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DrugStore.Models.User>
+@{
+    ViewBag.Title = "Danh sách thành viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section id="admin-content" class="p-3">
+    <h3 class="mb-3">Danh sách thành viên</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <a href="user-add.html" class="btn btn-primary">Thêm mới</a>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover mt-3">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Ảnh đại diện</th>
+                <th>Tên đăng nhập</th>
+                <th>Họ Tên</th>
+                <th>Email</th>
+                <th>Số ĐT</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var users = Model.ToList();
+            }
+            @for (var i = 1; i <= users.Count(); i++)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        <div style="background-image: url(../../images/Avts/avatar-1.jpg)" class="avatar"></div>
+                    </td>
+                    <td>@users[i-1].User_Namme</td>
+                    <td>@users[i - 1].Full_Name</td>
+                    <td>@users[i - 1].Email</td>
+                    <td>@users[i - 1].Phone</td>
+                    <td>
+                        <a href="user-edit.html" class="btn btn-sm btn-info">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</section>
+

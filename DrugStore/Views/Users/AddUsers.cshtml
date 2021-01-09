@@ -1,0 +1,83 @@
+﻿@model IEnumerable<DrugStore.Models.Role>
+@{
+    ViewBag.Title = "Thêm người dùng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section id="admin-content" class="p-3">
+    <h3 class="mb-4">Thêm mới thành viên</h3>
+    <form method="post" action="/Users/AddUsers" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" name="username" class="form-control" placeholder="tên đăng nhập" />
+                    @Html.Raw(ViewData["errorUsername"])
+
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" name="password" class="form-control" placeholder="mật khẩu" />
+                    @Html.Raw(ViewData["errorPassword"])
+
+                </div>
+                <div class="form-group">
+                    <label>Họ tên</label>
+                    <input type="text" name="fullname" class="form-control" placeholder="họ tên" />
+                    @Html.Raw(ViewData["errorFullname"])
+
+                </div>
+                <div class="form-group">
+                    <label>Quyền</label>
+                    @{
+                        var roles = Model.ToList();
+                    }
+                    <select class="form-control" name="role">
+
+                        @for (var i = 0; i < roles.Count(); i++)
+                        {
+                            if (i == 0)
+                            {
+                                <option selected value="@roles[i].Role_Id">@roles[i].Role_Name</option>
+                            }
+                            else
+                            {
+                                <option value="@roles[i].Role_Id"> @roles[i - 1].Role_Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="phone" />
+                    @Html.Raw(ViewData["errorEmail"])
+
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control" placeholder="phone" />
+                    @Html.Raw(ViewData["errorPhone"])
+
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" name="address" class="form-control" placeholder="địa chỉ" />
+                    @Html.Raw(ViewData["errorAddress"])
+                </div>
+                <div class="form-group">
+                    <label>Hình đại diện</label>
+                    <input type="file" accept="image/*" name="avatar" class="form-control" placeholder="avatar" />
+                    @Html.Raw(ViewData["errorAvatar"])
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-success">Lưu lại</button>
+                <a class="btn btn-secondary" href="/Users/Users">Quay lại</a>
+            </div>
+            @Html.Raw(ViewData["notice"])
+        </div>
+    </form>
+</section>
+

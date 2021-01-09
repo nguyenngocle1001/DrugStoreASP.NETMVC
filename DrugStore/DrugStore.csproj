@@ -140,6 +140,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DrugsDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Encrypt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +247,7 @@
     <Content Include="Content\User\images\star22.png" />
     <Content Include="Content\User\images\tab3.png" />
     <Content Include="Content\User\images\videoimg2.png" />
+    <Content Include="images\Avts\avatar-1.jpg" />
     <Content Include="Scripts\User\js\bootstrap.js" />
     <Content Include="Scripts\User\js\creditly.js" />
     <Content Include="Scripts\User\js\easing.js" />
@@ -461,18 +463,22 @@
     <Content Include="tinymce\js\tinymce\langs\readme.md" />
     <Content Include="tinymce\js\tinymce\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
     <Content Include="tinymce\js\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
+    <Content Include="Views\Roles\Roles.cshtml" />
+    <Content Include="Views\Roles\AddRoles.cshtml" />
+    <Content Include="Views\Roles\EditRoles.cshtml" />
+    <Content Include="Views\Manufactures\Manufactures.cshtml" />
+    <Content Include="Views\Manufactures\AddManufactures.cshtml" />
+    <Content Include="Views\Manufactures\EditManufactures.cshtml" />
+    <Content Include="Views\Users\Users.cshtml" />
+    <Content Include="Views\Users\AddUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\Avatars\" />
     <Folder Include="images\Products\" />
-    <Folder Include="images\User\" />
     <Folder Include="Views\Bills\" />
     <Folder Include="Views\Categorys\" />
     <Folder Include="Views\Drugs\" />
-    <Folder Include="Views\Manufactures\" />
-    <Folder Include="Views\Roles\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
