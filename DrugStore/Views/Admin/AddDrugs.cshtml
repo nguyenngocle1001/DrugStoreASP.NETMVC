@@ -1,39 +1,64 @@
-﻿
-@{
-    ViewBag.Title = "AddDrugs";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-}
+﻿@model DrugStore.Models.Drug
+
+    @{
+        ViewBag.Title = "AddDrugs";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
 
     <section id="admin-content" class="p-3">
-        <h3 class="mb-4">Thêm mới thành viên</h3>
-        <form method="post" action="">
+        <h3 class="mb-4" style=" text-align: center">Thêm mới thuốc</h3>
+        @using (Html.BeginForm("AddDrugs", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
             <div class="row">
+                @Html.ValidationSummary(true)
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="email" class="form-control" placeholder="email" />
+                        <label>Tên thuốc</label>
+                        <input type="text" name="Drug_Name" class="form-control" placeholder="Tên thuốc" />
+                        @Html.ValidationMessageFor(model => model.Drug_Name)
                     </div>
                     <div class="form-group">
-                        <label>Mật khẩu</label>
-                        <input type="password" name="password" class="form-control" placeholder="password" />
+                        <label>Giá bán</label>
+                        <input type="text" name="Price" class="form-control" placeholder="Giá bán" />
+                        @Html.ValidationMessageFor(model => model.Price)
                     </div>
                     <div class="form-group">
-                        <label>Họ tên</label>
-                        <input type="text" name="fullname" class="form-control" placeholder="fullname" />
+                        <label>Số lượng</label>
+                        <input type="number" name="Quantity" class="form-control" placeholder="Số lượng" />
+                        @Html.ValidationMessageFor(model => model.Quantity)
+                    </div>
+                    <div class="form-group">
+                        <label>Nhà sản xuất</label>
+                        @Html.DropDownList("Manu_Id")
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Số điện thoại</label>
-                        <input type="text" name="phone" class="form-control" placeholder="phone" />
+                        <label>Ngày sản xuất</label>
+                        <input type="date" name="Mfg" class="form-control" placeholder="phone" />
                     </div>
                     <div class="form-group">
-                        <label>Địa chỉ</label>
-                        <input type="text" name="address" class="form-control" placeholder="address" />
+                        <label>Hạn sử dụng</label>
+                        <input type="date" name="Exp" class="form-control" placeholder="address" />
                     </div>
                     <div class="form-group">
-                        <label>Avatar</label>
-                        <input type="text" name="avatar" class="form-control" placeholder="avatar" />
+                        <label>Hình mô tả</label>
+                        <input type="file" name="Images" class="form-control" placeholder="avatar" />
+                        @ViewBag.ErrorImg
+                    </div>
+                    <div class="form-group">
+                        <label>Loại thuốc</label>
+                        @Html.DropDownList("Cate_Id")
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <div class="col-md-10">
+                            <textarea name="Desc"></textarea>
+                        </div>
+                    
                     </div>
                 </div>
                 <div class="col-12 mt-3">
@@ -41,6 +66,8 @@
                     <a class="btn btn-secondary" href="user-list.html">Quay lại</a>
                 </div>
             </div>
-        </form>
+        }
+
+
     </section>
 
