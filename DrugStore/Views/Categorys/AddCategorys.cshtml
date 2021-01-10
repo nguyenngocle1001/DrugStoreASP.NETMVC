@@ -1,0 +1,39 @@
+﻿@model DrugStore.Models.Category
+@{
+    ViewBag.Title = "AddCategorys";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<section id="admin-content" class="p-3">
+    <h3 class="mb-4" style=" text-align: center">Thêm mới loại thuốc</h3>
+    @using (Html.BeginForm("AddCategorys", "Categorys", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+<div class="row">
+    @Html.ValidationSummary(true)
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Tên loại thuốc</label>
+                <input type="text" name="Cate_Name" class="form-control" placeholder="Tên thuốc" />
+                @Html.ValidationMessageFor(model => model.Cate_Name)
+                @ViewData["errorName"]
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-12 mt-3" style="text-align: center">
+            <button type="submit" class="btn btn-success">Lưu lại</button>
+            <a class="btn btn-secondary" href="/Categorys/Categorys">Quay lại</a>
+        </div>
+
+        
+    </div>
+    }
+
+
+</section>
+

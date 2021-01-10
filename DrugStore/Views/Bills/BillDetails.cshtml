@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DrugStore.Models.Bill_Detail>
+@{
+    ViewBag.Title = "BillDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+    <section id="admin-content" class="p-3">
+        <h3 class="mb-3" style="text-align: center"> CHI TIẾT HÓA ĐƠN</h3>
+        <div class="row">
+            <p style="margin-left: 40%">Tên khách hàng: @ViewBag.Name</p>
+
+        </div>
+        <table class="table table-bordered table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 1;
+                }
+
+                @foreach (var bill in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@bill.Drug_Id</td>
+                        <td>@bill.Drug.Drug_Name</td>
+                        <td>@bill.Quantity</td>
+                        <td>@bill.Drug.Price</td>
+                        <td>@bill.Amount</td>
+
+                    </tr>
+                    i++;
+
+                }
+
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4" style="padding-left: 11%; font-size: 20px"><b>Tổng tiền: @ViewBag.Total</b></div>
+        </div>
+    </section>

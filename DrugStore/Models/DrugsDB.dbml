@@ -10,6 +10,21 @@
       <Association Name="Drug_Bill_Detail" Member="Drug" ThisKey="Drug_Id" OtherKey="Drug_Id" Type="Drug" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_Namme" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Full_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Avatar" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Address" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Role_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Bill" Member="Bills" ThisKey="User_Id" OtherKey="User_Id" Type="Bill" />
+      <Association Name="Role_User" Member="Role" ThisKey="Role_Id" OtherKey="Role_Id" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Bills" Member="Bills">
     <Type Name="Bill">
       <Column Name="Bill_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -41,14 +56,14 @@
       <Column Name="Price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Association Name="Drug_Bill_Detail" Member="Bill_Details" ThisKey="Drug_Id" OtherKey="Drug_Id" Type="Bill_Detail" />
       <Association Name="Category_Drug" Member="Category1" ThisKey="Category" OtherKey="Cate_Id" Type="Category" IsForeignKey="true" />
-      <Association Name="Manufacturer_Drug" Member="Manufacturer1" ThisKey="Manufacturer" OtherKey="Id" Type="Manufacturer" IsForeignKey="true" />
+      <Association Name="Manufacturer_Drug" Member="Manufacturer1" ThisKey="Manufacturer" OtherKey="Manu_Id" Type="Manufacturer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Manufacturers" Member="Manufacturers">
     <Type Name="Manufacturer">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Manu_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Association Name="Manufacturer_Drug" Member="Drugs" ThisKey="Id" OtherKey="Manufacturer" Type="Drug" />
+      <Association Name="Manufacturer_Drug" Member="Drugs" ThisKey="Manu_Id" OtherKey="Manufacturer" Type="Drug" />
     </Type>
   </Table>
   <Table Name="dbo.Roles" Member="Roles">
@@ -57,21 +72,6 @@
       <Column Name="Role_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Role_User" Member="Users" ThisKey="Role_Id" OtherKey="Role_Id" Type="User" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
-      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="User_Namme" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="Full_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Avatar" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Address" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Role_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="User_Bill" Member="Bills" ThisKey="User_Id" OtherKey="User_Id" Type="Bill" />
-      <Association Name="Role_User" Member="Role" ThisKey="Role_Id" OtherKey="Role_Id" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

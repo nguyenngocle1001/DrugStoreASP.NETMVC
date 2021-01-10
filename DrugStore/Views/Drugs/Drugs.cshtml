@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<DrugStore.Models.Drug>
-
 @{
     ViewBag.Title = "Drugs";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -9,7 +8,7 @@
     <h3 class="mb-3">Danh sách thành viên</h3>
     <div class="row">
         <div class="col-md-8">
-            <a href="user-add.html" class="btn btn-primary">Thêm mới</a>
+            <a href="AddDrugs" class="btn btn-primary">Thêm mới</a>
         </div>
         <div class="col-md-4">
             <div class="input-group">
@@ -33,7 +32,7 @@
                 <th style="width: 50px">NPP</th>
                 <th style="width: 50px">Loại thuốc</thstyle="width:>
                 <th>Giá bán</th>
-                <th style="width: 100px">#</th>
+                <th style="width: 150px">#</th>
             </tr>
         </thead>
         <tbody>
@@ -45,22 +44,19 @@
             {
                 <tr>
                     <td>@i</td>
-                    <td><img style="width:140px; height:140px" src="~/images/Products/@drug.Images" alt=""></td>
+                    <td><img style="width:140px; height:140px" src="~/images/Products/@drug.Drug_Id/@drug.Images" alt=""></td>
                     <td>@drug.Drug_Name</td>
-                    <td>@drug.Description</td>
+                    <td>@Html.Raw(drug.Description)</td>
                     <td>@drug.Quantity</td>
                     <td>@drug.MFG</td>
                     <td>@drug.EXP</td>
-                    <td>@drug.Manufacturer</td>
-                    <td>@drug.Category</td>
+                    <td>@drug.Manufacturer1.Name</td>
+                    <td>@drug.Category1.Cate_Name</td>
                     <td>@drug.Price</td>
                     <td>
-                        <a href="user-edit.html" class="btn btn-sm btn-info">
-                            <i class="fa fa-pencil-square-o"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-danger">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
+                        <a href="@Url.Action("EditDrug", "Drugs", new { id = drug.Drug_Id })" class="btn btn-sm btn-info"> <i class="fa fa-pencil-square-o"></i></a>
+                        <a href="@Url.Action("Detail", "Drugs", new { id = drug.Drug_Id })" class="btn btn-sm btn-info"> <i class="fa fa-info-circle"></i></a>
+                        <a href="@Url.Action("Delete", "Drugs", new { id = drug.Drug_Id })" class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 i++;

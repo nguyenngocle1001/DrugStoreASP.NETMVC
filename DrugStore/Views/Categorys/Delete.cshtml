@@ -1,0 +1,45 @@
+﻿@model DrugStore.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+    <div>
+        <div style="padding: 20px;">
+            <div style="text-align: center">
+                <h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+                <h3>Bạn quyết định xóa phân loại này?</h3>
+            </div>
+
+            <div style="border: 2px solid;border-radius: 15px;">
+                <dl class="dl-horizontal" style=" margin: 10px">
+                    <dt>
+                        Tên loại thuốc
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Cate_Name)
+                    </dd>
+                    
+
+                </dl>
+                <dl>
+                    <dt>@ViewData["Error"]</dt>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color" style="margin: 10px">
+                        <input type="submit" value="Xóa" class="btn btn-default" /> |
+                        @Html.ActionLink("Quay lại", "Categorys")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>

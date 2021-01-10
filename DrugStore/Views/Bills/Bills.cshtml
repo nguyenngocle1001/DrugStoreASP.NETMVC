@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DrugStore.Models.Bill>
+@{
+    ViewBag.Title = "Bills";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <section id="admin-content" class="p-3">
+        <h3 class="mb-3">Danh sách hóa đơn</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Khách hàng</th>
+                    <th>Ngày lập</th>
+                    <th>Tổng tiền</th>
+                    <th style="width: 150px">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 1;
+                }
+
+                @foreach (var bill in Model)
+                {
+                <tr>
+                    <td>@i</td>
+
+                    <td>@bill.User.Full_Name</td>
+                    <td>@bill.Bill_Date</td>
+                    <td>@bill.Total</td>
+
+                    <td>
+                        <a href="@Url.Action("BillDetails", "Bills", new { id = bill.Bill_Id })" class="btn btn-sm btn-info"> <i class="fa fa-info-circle"></i></a>
+                        
+                    </td>
+                </tr>
+                    i++;
+
+                }
+
+            </tbody>
+        </table>
+    </section>
+

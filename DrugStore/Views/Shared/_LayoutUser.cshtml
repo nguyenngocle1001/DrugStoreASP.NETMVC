@@ -168,9 +168,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p>
                             Hãy tham gia Cửa hàng tạp hóa! Hãy thiết lập Tài khoản của bạn
                         </p>
-                        <form action="#" method="post">
+                        <form action="/Register/Register" method="post">
                             <div class="styled-input agile-styled-input-top">
                                 <input type="text" placeholder="họ tên" name="Name" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="text" placeholder="Tên đăng nhập" name="UserName" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="text" placeholder="Số diện thoại" name="Tel" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="text" placeholder="Địa chỉ" name="Address" required="">
                             </div>
                             <div class="styled-input">
                                 <input type="email" placeholder="email" name="Email" required="">
@@ -179,8 +188,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <input type="password" placeholder="mật khẩu" name="password" id="password1" required="">
                             </div>
                             <div class="styled-input">
-                                <input type="password" placeholder="xác nhận mật khẩu" name="Confirm Password" id="password2" required="">
+                                <input type="password" placeholder="xác nhận mật khẩu" name="ConfirmPassword" id="password2" required="">
                             </div>
+                            @if (Session["notice1"] != null)
+                            {
+                                <div class="styled-input">
+                                    @Html.Raw(Session["notice1"])
+                                </div>
+                            }
+                            @if (Session["notice2"] != null)
+                            {
+                                <div class="styled-input">
+                                    @Html.Raw(Session["notice2"])
+                                </div>
+                            }
                             <input type="submit" value="Đăng Ký">
                         </form>
                         <p>
